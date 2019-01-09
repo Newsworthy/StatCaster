@@ -1,0 +1,38 @@
+{
+  "name": "statcaster",
+  "version": "1.0.0",
+  "description": "A node based solution to updating graphics for vMix",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Newsworthy/StatCaster.git"
+  },
+  "author": "Nick Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Newsworthy/StatCaster/issues"
+  },
+  "homepage": "https://github.com/Newsworthy/StatCaster#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "hbs": "^4.0.1",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.2",
+    "validator": "^10.10.0"
+  },
+  "devDependencies": {
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0"
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Newsworthy Vision Ltd.</title>
+</head>
+<body>
+	{{> header}}
+
+	{{#each topline }}
+	<ul>
+		<li>
+			{{this}}
+		</li>
+	</ul>
+
+{{/each}}
+
+	{{> footer}}
+</body>
+</html>

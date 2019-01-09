@@ -1,0 +1,225 @@
+body { 
+    padding-top: 70px;
+    background: black;
+    color: white;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    padding-bottom: 80px;
+}
+
+.navbar-brand {
+  padding: 0px; /* firefox bug fix */
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 12px; /* firefox bug fix */
+  width: auto;
+}
+
+#image-background {
+  /* Template for any fixed fullscreen background image */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  overflow: hidden;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: #000;
+  background-size: cover;
+  opacity: 0.3;
+  filter: blur(5px);
+}
+
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+      top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: #000;
+  background-size: cover;
+  opacity: 0.3;
+  -webkit-animation: blur 10s linear forwards;
+     -moz-animation: blur 10s linear forwards;
+      -ms-animation: blur 10s linear forwards;
+       -o-animation: blur 10s linear forwards;
+          animation: blur 10s linear forwards;
+  -webkit-animation-delay: 5s;
+     -moz-animation-delay: 5s;
+          animation-delay: 5s;
+}
+
+hr {
+  border-top: 2px groove grey;
+}
+
+#landing-title {
+  z-index: 0; /* brings forward in page  */
+  position: relative; /* Must do for z index to work */
+  text-align: center;
+  padding-top: 30vh; /* centres vertically based on view height */
+  text-shadow: 2px 2px #000;
+  margin-top: 25px;
+  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: fadein 4s; /* Firefox < 16 */
+      -ms-animation: fadein 4s; /* Internet Explorer */
+       -o-animation: fadein 4s; /* Opera < 12.1 */
+          animation: fadein 4s;
+}
+
+#body {
+  z-index: 1; /* brings forward in page  */
+  text-shadow: 2px 2px #000;
+  margin-top: 25px;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: fadein 1s; /* Firefox < 16 */
+      -ms-animation: fadein 1s; /* Internet Explorer */
+       -o-animation: fadein 1s; /* Opera < 12.1 */
+          animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes blur {
+  to {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+@-moz-keyframes blur {
+  to {
+    -moz-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+@keyframes blur {
+  to {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+#footer {
+  border-top: 2px groove grey;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:80px;
+  width:100%;
+  text-align: center;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+
+.img-fill {
+    max-width: 100%;
+}
+
+.img-responsive {
+  width: auto;
+}
+
+#headline-center {
+  text-align: center;
+}
+
+.bullet-headline {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+figure {
+  display: block;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 0;
+}
+figcaption {
+  position: absolute;
+  background: black;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 10px 20px;
+  opacity: 0;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition:    all 0.6s ease;
+  -o-transition:      all 0.6s ease;
+}
+figure:hover figcaption {
+  opacity: 1;
+}
+figure:before {
+  content: "?";
+  position: absolute;
+  font-weight: 800;
+  background: black;
+  background: rgba(255,255,255,0.75);
+  text-shadow: 0 0 5px white;
+  color: black;
+  width: 24px;
+  height: 24px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius:    12px;
+  border-radius:         12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  -moz-transition: all 0.6s ease;
+  opacity: 0.75;
+}
+figure:hover:before {
+  opacity: 0;
+}
+
+.cap-left:before {  bottom: 35px; left: 10px; }
+.cap-left figcaption { bottom: 35px; left: -30%; }
+.cap-left:hover figcaption { left: 0; }
+
+/* Now begins the portfolio only section*/
