@@ -15,6 +15,7 @@ const fs = require('fs');
 var {mongoose} = require('./db/mongoose');
 var {Event} = require('./models/event');
 var {Team} = require('./models/team');
+var secrets = require('./config/secrets');
 
 const port = process.env.PORT || 3000;
 var app = express();
