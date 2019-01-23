@@ -29,18 +29,18 @@ hbs.registerPartials(__dirname + '/../views/partials');
 app.set('view engine', 'hbs');
 
 
-// app.use((req, res, next) => {
-// 	var now = new Date().toString();
-// 	var log = `${now}: ${req.method} ${req.url}`;
-//
-// 	console.log(log);
-// 	fs.appendFile('server.log', log + '\n', (err) => {
-// 		if (err) {
-// 			console.log('Unable to append to server.log.');
-// 		}
-// 	});
-// 	next();
-// });
+app.use((req, res, next) => {
+	var now = new Date().toString();
+	var log = `${now}: ${req.method} ${req.url}`;
+
+	console.log(log);
+	fs.appendFile('server.log', log + '\n', (err) => {
+		if (err) {
+			console.log('Unable to append to server.log.');
+		}
+	});
+	next();
+});
 
 app.use(express.static(__dirname + '/../public'));
 
@@ -62,24 +62,26 @@ app.get('/create', (req, res) => {
 
 app.get('/list', (req, res) => {
 	Team.find().then((teams) => {
-		console.log(teams);
 		res.render('list.hbs', {teamList : teams});
 	}, (e) => {
 		res.status(400).send(e);
 	});
 });
 
-app.get('/update', (req, res) => {
-	res.send('/update');
+app.get('/update/team/:id', (req, res) => {
+	Team.find().then((teams) => {
+		res.render('update.hbs', {teamList : teams});
+	}, (e) => {
+		res.status(400).send(e);
+	});
 });
 
-app.get('/remove', (req, res) => {
-	res.send('/remove');
-});
+// app.get('/remove', (req, res) => {
+// 	res.send('/remove');
+// });
 
 app.get('/team/:id', (req, res) => {
   var id = req.params.id;
-
   if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
@@ -95,7 +97,6 @@ app.get('/team/:id', (req, res) => {
 // POST ROUTES
 app.post('/create', (req, res) => {
 	console.log('Post command received');
-	console.log(req.body);
 	var players = [];
 	var playerObj = {};
 	for (let i = 1; i < 21; i++) {
@@ -103,12 +104,12 @@ app.post('/create', (req, res) => {
 		if (req.body["player" + i + "Name"] === '') {
 			console.log("Empty player name detected, disregarding");
 		} else {
-			console.log(i);
-			console.log("This is number " + i + " " + playerObj);
+			// console.log(i);
+			// console.log("This is number " + i + " " + playerObj);
 			players.push(playerObj);
 		}
 	}
-	console.log("This is the players array: " + players);
+	// console.log("This is the players array: " + players);
 
 	var newTeam = new Team({
 		// POSTMAN SETUP BELOW
@@ -125,7 +126,7 @@ app.post('/create', (req, res) => {
 		"team.teamRoster.players": players
 	});
 
-	console.log(req.params);
+	// console.log(req.params);
 
 	newTeam.save().then((doc) => {
 		var teamId = doc.id;
@@ -138,19 +139,19 @@ app.post('/create', (req, res) => {
 });
 
 // Delete ROUTES
-app.delete('/events/:id', (req, res) => {
+app.post('/remove/team/:id', (req, res) => {
+	console.log("Delete command received. " + req.params.id)
   var id = req.params.id;
 
   if(!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
 
-  Event.findByIdAndRemove(id).then((event) => {
-    if(!event) {
+  Team.findOneAndDelete(id).then((team) => {
+    if(!team) {
       return res.status(404).send();
     }
-
-    res.send({event});
+    res.render("deleteSuccess.hbs");
   }).catch((e) => {
     res.status(400).send();
   });

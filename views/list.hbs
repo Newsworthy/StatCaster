@@ -2,6 +2,23 @@
 <html>
 <head>
 	<title>Newsworthy Vision Ltd. - Error</title>
+	<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #111111;
+}
+</style>
 </head>
 <body>
 	{{> header}}
@@ -18,9 +35,11 @@
 								<th>Team Name</th>
 								<th>Short Team Name</th>
 								<th>JSON Output</th>
+								<th></th>
+								<th></th>
 							</tr>
 						{{#each teamList}}
-						<tr><td>{{team.teamName}}</td><td>{{team.shortTeamName}}</td><td><a href="/team/{{_id}}" target="_blank">LINK</a></td></tr>
+						<tr><td>{{team.teamName}}</td><td>{{team.shortTeamName}}</td><td><a href="/team/{{_id}}" target="_blank">LINK</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-lg btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-lg btn-block" role="button"></a></form></td></tr>
 						{{/each}}
 					</table>
 					</div>
