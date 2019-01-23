@@ -18,7 +18,7 @@ var {Team} = require('./models/team');
 
 const port = process.env.PORT || 3000;
 var app = express();
-console.log(__dirname);
+// console.log(__dirname);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -26,6 +26,7 @@ app.use(upload.array());
 
 hbs.registerPartials(__dirname + '/../views/partials');
 app.set('view engine', 'hbs');
+
 
 // app.use((req, res, next) => {
 // 	var now = new Date().toString();
@@ -46,6 +47,10 @@ hbs.registerHelper('getCurrentYear', () => {
 	return new Date().getFullYear();
 });
 
+// hbs.registerHelper('teamId', (context, options) => {
+// 	return options.fn(doc.id);
+// });
+
 app.get('/', (req, res) => {
 	res.render('home.hbs');
 });
@@ -55,7 +60,12 @@ app.get('/create', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-	res.send('/list');
+	Team.find().then((teams) => {
+		console.log(teams);
+		res.render('list.hbs', {teamList : teams});
+	}, (e) => {
+		res.status(400).send(e);
+	});
 });
 
 app.get('/update', (req, res) => {
@@ -65,32 +75,6 @@ app.get('/update', (req, res) => {
 app.get('/remove', (req, res) => {
 	res.send('/remove');
 });
-
-// app.get('/events', (req, res) => {
-//   Event.find().then((events) => {
-//     res.send({events});
-//   }, (e) => {
-//     res.status(400).send(e);
-//   });
-// });
-
-// app.get('/events/:id', (req, res) => {
-//   var id = req.params.id;
-//
-//   if (!ObjectID.isValid(id)) {
-//     return res.status(404).send();
-//   }
-//
-//   Event.findById(id).then((event) => {
-//     if (!event) {
-//       return res.status(404).send();
-//     }
-//
-//     res.send({event});
-//   }).catch((e) => {
-//     res.status(400).send();
-//   });
-// });
 
 app.get('/team/:id', (req, res) => {
   var id = req.params.id;
@@ -107,50 +91,50 @@ app.get('/team/:id', (req, res) => {
     res.status(400).send();
 	});
 });
-
-
-
-
 // POST ROUTES
-
 app.post('/create', (req, res) => {
 	console.log('Post command received');
-	console.log(req.body.teamName);
-	console.log(req.body.teamShortName);
-	// console.log(req.body.player1Name);
-	// console.log(req.body.player1Number);
-	// console.log(req.body.team[0].teamName)
+	console.log(req.body);
+	var players = [];
+	var playerObj = {};
+	for (let i = 1; i < 21; i++) {
+		var playerObj = { playerName: req.body[`player${i}Name`], playerNumber: req.body[`player${i}Number`], playerPosition: req.body[`player${i}Position`] };
+		if (req.body["player" + i + "Name"] === '') {
+			console.log("Empty player name detected, disregarding");
+		} else {
+			console.log(i);
+			console.log("This is number " + i + " " + playerObj);
+			players.push(playerObj);
+		}
+	}
+	console.log("This is the players array: " + players);
+
 	var newTeam = new Team({
-		"team": req.body,
-		"teamName": req.body.teamName,
-		"shortTeamName": req.body.shortTeamName,
-		// "teamRoster": req.body.teamRoster,
-		"teamCoach": req.body.teamCoach
+		// POSTMAN SETUP BELOW
+		// "team": req.body.team[0],
+		// "teamName": req.body.team[0].teamName,
+		// "shortTeamName": req.body.team[0].shortTeamName,
+		// "teamRoster": req.body.team[0].teamRoster,
+		// "teamCoach": req.body.team[0].teamCoach
+
+		// WEB SETUP BELOW
+		"team.teamRoster.teamCoach": req.body.coachName,
+		"team.shortTeamName": req.body.teamShortName,
+		"team.teamName": req.body.teamName,
+		"team.teamRoster.players": players
 	});
+
+	console.log(req.params);
+
 	newTeam.save().then((doc) => {
-		console.log(doc);
-		res.send(doc);
+		var teamId = doc.id;
+		console.log(teamId);
+		res.render('success.hbs', {id : teamId});
 		console.log("Team Added");
 	}, (e) => {
 		res.status(400).send(e);
 	});
 });
-
-// app.post('/add', (req, res) => {
-// 	console.log("Post command received");
-// 	var event = new Event({
-// 		"client.name": req.body.client.name,
-// 		"client.event.title": req.body.client.event.title,
-// 		"client.event.speakers":  req.body.client.event.speakers
-// 	});
-// 	event.save().then((doc) => {
-// 			console.log(doc);
-// 			res.send(doc);
-// 			console.log("Event sent");
-// 		}, (e) => {
-// 			res.status(400).send(e);
-// 		});
-// });
 
 // Delete ROUTES
 app.delete('/events/:id', (req, res) => {

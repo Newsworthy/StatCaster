@@ -28,7 +28,8 @@
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.1.10",
-    "mongoose": "^5.4.2",
+    "mongoose": "^5.4.5",
+    "mongoose-map": "^1.1.0",
     "multer": "^1.4.1",
     "validator": "^10.10.0"
   },

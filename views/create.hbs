@@ -9,7 +9,7 @@
 	<script>
 	$(document).ready(function() {
   for (i = 1; i < 21; i++) {
-    text = "<div class='form-group row'><div class='col-md-6'><input id='player" + i + "Name' name='player" + i + "Name' placeholder='Firstname Lastname' type='text' class='form-control here'></div><div class='col-md-6'><select id='player" + i + "Number' name='player" + i + "Number'  class='form-control here jerseyNumber'></select></div></div>";
+    text = "<div class='form-group row'><div class='col-md-4'><input id='player" + i + "Name' name='player" + i + "Name' placeholder='Firstname Lastname' type='text' class='form-control here'></div><div class='col-md-4'><select id='player" + i + "Number' name='player" + i + "Number'  class='form-control here jerseyNumber'></select></div><div class='col-md-4'><select id='player" + i + "Position' name='player" + i + "Position'  class='form-control here position'><option value='--'>--</option><option value='Goaltender'>Goaltender</option><option value='Forward'>Forward</option><option value='Defense'>Defense</option></select></div>";
     var playerSpan = $('.player');
     playerSpan.append($(text));
   }
@@ -29,47 +29,34 @@
 	        <h3><span id="subheadline">Please enter the information below to add to the database</span></h3>
 						<form method="post" action="/create">
 							<div class="form-group row">
-								<div class="col-md-6">
+								<div class="col-md-4">
     						<label for="teamName" class="col-form-label">Team Name</label>
 								<input id="teamName" name="teamName" placeholder="London Lemmings" type="text" required="required" class="form-control here">
     						</div>
-								<div class="col-md-6">
+								<div class="col-md-4">
     						<label for="teamShortName" class="col-form-label">Team Short Name</label>
       						<input id="teamShortName" name="teamShortName" placeholder="LLM" type="text" aria-describedby="teamShortNameHelpBlock" required="required" maxlength="3" class="form-control here">
       						<span id="teamShortNameHelpBlock" class="form-text text-muted">Three Characters Only</span>
     						</div>
   						</div>
   						<div class="form-group row">
-								<div class="col-md-6">
+								<div class="col-md-4">
     						<label for="coachName" class="col-form-label">Coach Name</label>
       						<input id="coachName" name="coachName" type="text" class="form-control here">
     						</div>
   						</div>
 							<div class="form-group row">
-								<div class="col-md-6">
-    						<label for="goalieName" class="col-form-label">Goalie Name</label>
-      						<input id="goalieName" name="goalieName" type="text" class="form-control here">
-    						</div>
-								<div class="col-md-6">
-									<label for="goalieNumber" class="col-form-label">Goalie Number</label>
-	      						<select id="goalieNumber" name="goalieNumber" class="form-control here jerseyNumber">
-										</select>
-								</div>
-  						</div>
-							<div class="form-group row">
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<strong>Player Names</strong>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<strong>Player Numbers</strong>
-							</div>
+								</div>
+								<div class="col-md-4">
+									<strong>Player Position</strong>
+								</div>
 						</div>
 							<span class="player">
-
-
-
-
-
 							</span>
   						<div class="form-group row">
     						<div class="col-md-6">
