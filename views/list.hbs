@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Newsworthy Vision Ltd. - Error</title>
+	<title>Newsworthy Vision Ltd. - List of teams</title>
 	<style>
 table {
 	font-family: arial, sans-serif;
@@ -39,7 +39,7 @@ tr:nth-child(even) {
 								<th></th>
 							</tr>
 						{{#each teamList}}
-						<tr><td>{{team.teamName}}</td><td>{{team.shortTeamName}}</td><td><a href="/team/{{_id}}" target="_blank">LINK</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-lg btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-lg btn-block" role="button"></a></form></td></tr>
+						<tr><td>{{team.teamName}}</td><td>{{team.shortTeamName}}</td><td><a href="/team/{{_id}}" target="_blank">LINK</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-block" role="button"></a></form></td></tr>
 						{{/each}}
 					</table>
 					</div>
@@ -50,7 +50,7 @@ tr:nth-child(even) {
 					Right click the link for the team you want the data for, select <strong>"copy link address"</strong> and paste as a JSON source in vMix
 				</div>
 			</div>
-</span>
+			</span>
 					<hr>
 		</div>
 

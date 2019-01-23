@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Newsworthy Vision Ltd. - Error</title>
+	<script>
+	setTimeout(function() {
+	  window.location.href = "http://localhost:3000/list";
+	}, 3000);
+	</script>
 </head>
 <body>
 	{{> header}}
@@ -9,16 +14,14 @@
 		<div class="container" id="page-header">
 			<h1><span id="headline">Team Added Succesfully</span></h1>
 			<hr>
-				<h3><span id="subheadline">Input the following address as a JSON Data Source within vMix.</span></h3>
+				<h3><span id="subheadline"></span></h3>
 				<span id="content">
 					<div class="row">
 						<div class="container col-md-12">
-							{{{teamId}}}
 						</div>
 					</div>
 				</span>
 		</div>
-		<hr>
 	</div>
 	{{> footer}}
 </body>
