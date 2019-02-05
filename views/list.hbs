@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Newsworthy Vision Ltd. - List of teams</title>
+	<title>Statcaster - Team List</title>
 	<style>
 table {
 	font-family: arial, sans-serif;
@@ -33,13 +33,12 @@ tr:nth-child(even) {
 						<table style="width:100%">
 							<tr>
 								<th>Team Name</th>
-								<th>Short Team Name</th>
-								<th>JSON Output</th>
+								<th></th>
 								<th></th>
 								<th></th>
 							</tr>
 						{{#each teamList}}
-						<tr><td>{{team.teamName}}</td><td>{{team.shortTeamName}}</td><td><a href="/team/{{_id}}" target="_blank">LINK</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-block" role="button"></a></form></td></tr>
+						<tr><td>{{team.teamName}}</td><td><a href="/team/{{_id}}" target="_blank" class="btn btn-success btn-block" role="button">JSON</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-block" role="button" value="Delete"></a></form></td></tr>
 						{{/each}}
 					</table>
 					</div>

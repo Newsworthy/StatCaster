@@ -60,6 +60,8 @@ var Team = mongoose.model('Team', {
       	type: Date,
       	default: Date.now
     	},
+      // teamLogo: result.url,
+      // teamLogo_id: result.public_id,
       type: Mixed
   	}
 });

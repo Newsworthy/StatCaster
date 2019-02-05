@@ -5,6 +5,8 @@ const {ObjectID} = require('mongodb');
 var multer = require('multer');
 var upload = multer();
 const $ = require('jquery');
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
 
 const hbs = require('hbs');
 const fs = require('fs');
@@ -69,16 +71,22 @@ app.get('/list', (req, res) => {
 });
 
 app.get('/update/team/:id', (req, res) => {
-	Team.find().then((teams) => {
-		res.render('update.hbs', {teamList : teams});
-	}, (e) => {
-		res.status(400).send(e);
+	var id = req.params.id;
+	console.log(id);
+	if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+	Team.findById(id).then((team) => {
+		if (!team) {
+			return res.render('error.hbs');
+		}
+		console.log(team);
+		console.log(team.team.teamRoster.players[0])
+		res.render('update.hbs', {team});
+	}).catch((e) => {
+		res.render('error.hbs');
 	});
 });
-
-// app.get('/remove', (req, res) => {
-// 	res.send('/remove');
-// });
 
 app.get('/team/:id', (req, res) => {
   var id = req.params.id;
@@ -104,12 +112,9 @@ app.post('/create', (req, res) => {
 		if (req.body["player" + i + "Name"] === '') {
 			console.log("Empty player name detected, disregarding");
 		} else {
-			// console.log(i);
-			// console.log("This is number " + i + " " + playerObj);
 			players.push(playerObj);
 		}
 	}
-	// console.log("This is the players array: " + players);
 
 	var newTeam = new Team({
 		// POSTMAN SETUP BELOW
@@ -123,16 +128,17 @@ app.post('/create', (req, res) => {
 		"team.teamRoster.teamCoach": req.body.coachName,
 		"team.shortTeamName": req.body.teamShortName,
 		"team.teamName": req.body.teamName,
-		"team.teamRoster.players": players
+		"team.teamRoster.players": players,
+		"team.added": new Date(),
+		"team.updated": new Date()
 	});
 
 	// console.log(req.params);
 
 	newTeam.save().then((doc) => {
 		var teamId = doc.id;
-		console.log(teamId);
-		res.render('success.hbs', {id : teamId});
-		console.log("Team Added");
+		res.render('success.hbs', {teamId});
+		console.log("Team Added - " + teamId);
 	}, (e) => {
 		res.status(400).send(e);
 	});
@@ -142,11 +148,9 @@ app.post('/create', (req, res) => {
 app.post('/remove/team/:id', (req, res) => {
 	console.log("Delete command received. " + req.params.id)
   var id = req.params.id;
-
   if(!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
-
   Team.findOneAndDelete(id).then((team) => {
     if(!team) {
       return res.status(404).send();

@@ -22,12 +22,25 @@
   });
 });
 </script>
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script>
+    document.getElementById("upload_widget_opener").addEventListener("click", function() {
+
+        cloudinary.openUploadWidget({ cloud_name: 'CLOUD_NAME', upload_preset: 'UPLAOD_PRESET'},
+                function(error, result) {
+                    console.log(error, result)
+                    // Push URL into text input
+                    document.getElementById('url_text').value = result[0].url;
+                });
+
+    }, false);
+</script>
 	<div class="container-fluid" id="body">
 	    <div class="container" id="page-header">
 	        <h1><span id="headline">Add a team</span></h1>
 	        <hr>
 	        <h3><span id="subheadline">Please enter the information below to add to the database</span></h3>
-						<form method="post" action="/create">
+						<form method="post" action="/create" enctype="multipart/form-data">
 							<div class="form-group row">
 								<div class="col-md-4">
     						<label for="teamName" class="col-form-label">Team Name</label>
@@ -44,7 +57,12 @@
     						<label for="coachName" class="col-form-label">Coach Name</label>
       						<input id="coachName" name="coachName" type="text" class="form-control here">
     						</div>
-  						</div>
+								<div class="col-md-4">
+									<label for="imageFile" class="col-form-label">Team Logo</label>
+									<input type="file" class="btn btn-default" name="teamLogo" accept="image/png">
+									<span id="teamLogoHelpBlock" class="form-text text-muted">Currently PNG files only</span>
+								</div>
+							</div>
 							<div class="form-group row">
 								<div class="col-md-4">
 									<strong>Player Names</strong>
@@ -53,7 +71,7 @@
 									<strong>Player Numbers</strong>
 								</div>
 								<div class="col-md-4">
-									<strong>Player Position</strong>
+									<strong>Player Positions</strong>
 								</div>
 						</div>
 							<span class="player">
