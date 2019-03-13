@@ -1,6 +1,6 @@
 {
   "name": "statcaster",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node based solution to updating graphics for vMix",
   "engines": {
     "node": "10.x",
