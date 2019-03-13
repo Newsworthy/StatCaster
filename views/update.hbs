@@ -9,10 +9,14 @@
 
 	<script>
 	$(document).ready(function() {
+
 	for (i = 1; i < 21; i++) {
-		text = "<div class='form-group row'><div class='col-md-4'><input id='player" + i + "Name' name='player" + i + "Name' value='{{#each team.team.teamRoster.players}}{{playerName}}{{/each}}' type='text' class='form-control here'></div><div class='col-md-4'><select id='player" + i + "Number' name='player" + i + "Number'  class='form-control here jerseyNumber'></select></div><div class='col-md-4'><select id='player" + i + "Position' name='player" + i + "Position'  class='form-control here position'><option value='--'>--</option><option value='Goaltender'>Goaltender</option><option value='Forward'>Forward</option><option value='Defense'>Defense</option></select></div>";
+		{{#each team.team.teamRoster.players}}
+		text = "<div class='form-group row'><div class='col-md-4'><input id='player" + i + "Name' name='player" + i + "Name' value='{{this.playerName}}' type='text' class='form-control here'></div><div class='col-md-4'><select id='player" + i + "Number' name='player" + i + "Number' selected='{{this.playerNumber}}' class='form-control here jerseyNumber'><option>{{this.playerNumber}}</option></select></div><div class='col-md-4'><select id='player" + i + "Position' name='player" + i + "Position' value='{{this.playerPosition}}' class='form control here position'><option value='{{this.playerPosition}}'>{{this.playerPosition}}</option><option value='Goaltender'>Goaltender</option><option value='Forward'>Forward</option><option value='Defense'>Defense</option></select></div></div>";
+
 		var playerSpan = $('.player');
 		playerSpan.append($(text));
+		{{/each}}
 	}
 
 	$(".jerseyNumber").each(function(){

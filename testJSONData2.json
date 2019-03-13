@@ -1,0 +1,34 @@
+
+{
+  "team": {
+    "_id": "5c87f7961c9d440000ce3296",
+    "entry": "StatCaster2019.TeamEntry",
+    "teamDetails": [
+      {
+        "teamName": "Test Teamname",
+        "teamNameShort": "TTN",
+        "teamFounded": 1986,
+        "teamHome": "London",
+        "players": [
+          {
+            "playerName": "Test Player1",
+            "playerPosition": "Forward",
+            "playerNationality": "GBR",
+            "playerNumber": 47
+          },
+          {
+            "playerName": "Test PLayer2",
+            "playerPosition": "Defense",
+            "playerNationality": "UKR",
+            "playerNumber": 25,
+            "captain": true
+          }
+        ]
+      }
+    ],
+    "team": [
+
+    ],
+    "added": "2019-03-12T18:21:33.260Z"
+  }
+}

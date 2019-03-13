@@ -38,7 +38,7 @@ tr:nth-child(even) {
 								<th></th>
 							</tr>
 						{{#each teamList}}
-						<tr><td>{{team.teamName}}</td><td><a href="/team/{{_id}}" target="_blank" class="btn btn-success btn-block" role="button">JSON</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-block" role="button" value="Delete"></a></form></td></tr>
+						<tr><td>{{team.[0].teamName}}</td><td><a href="/team/{{_id}}" target="_blank" class="btn btn-success btn-block" role="button">JSON</a></td><td><a href="/update/team/{{_id}}" class="btn btn-primary btn-block" role="button">Update</a></td><td><form action="/remove/team/{{_id}}" method="post"><input type="submit" class="btn btn-danger btn-block" role="button" value="Delete"></a></form></td></tr>
 						{{/each}}
 					</table>
 					</div>

@@ -1,0 +1,33 @@
+
+[
+  {
+    "teamName": "Test Teamname",
+    "teamNameShort": "TTN",
+    "teamFounded": "1986",
+    "teamHome": "London",
+    "players": [
+      {
+        "player1Name": "Test Player 1",
+        "player1Position": "Forward",
+        "player1Nationality": "GBR"
+      },
+      {
+        "player2Name": "Test Player 2",
+        "player2Position": "Defender",
+        "player2Nationality": "UKR"
+      },
+      {
+        "player3Name": "Test Player 3",
+        "player3Position": "Goaltender",
+        "player3Nationality": "IRL",
+        "captain": true
+      }
+    ],
+    "coachingStaff": [
+      {
+      "headCoach": "Derp McHerpson",
+      "teamManager": "Plarp McFlarplarp"
+      }
+    ]
+  }
+]
