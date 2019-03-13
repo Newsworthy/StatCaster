@@ -2,6 +2,9 @@
   "name": "statcaster",
   "version": "1.0.0",
   "description": "A node based solution to updating graphics for vMix",
+  "engines": {
+    "node": "10.2.1",
+  },
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
