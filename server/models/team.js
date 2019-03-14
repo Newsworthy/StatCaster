@@ -27,7 +27,10 @@ var Team = mongoose.model('Team', {
       type: String,
       default: "StatCaster2019.USER.INPUT"
     },
-    added: Date.Now,
+    added: {
+      type: Date,
+      default: Date.Now
+    }
     teamDetails: [
       {
         teamName: {
