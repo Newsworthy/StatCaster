@@ -30,7 +30,7 @@ var Team = mongoose.model('Team', {
     added: {
       type: Date,
       default: Date.Now
-    }
+    },
     teamDetails: [
       {
         teamName: {
