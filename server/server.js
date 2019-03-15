@@ -105,6 +105,7 @@ app.get('/team/:id', (req, res) => {
 // POST ROUTES
 app.post('/create', (req, res) => {
 	console.log('Post command received');
+	// We need to push the players names and other information into an array
 	var players = [];
 	var playerObj = {};
 	for (let i = 1; i < 21; i++) {
@@ -115,27 +116,49 @@ app.post('/create', (req, res) => {
 			players.push(playerObj);
 		}
 	}
+	//We need to push the variable below, 'teamDetails', as an object into an array of the same name
 
+	var teamDetailsObj = {
+	// Modified for Postman
+	"teamName": req.body.data.teamDetails[0].teamName,
+	"teamNameShort": req.body.data.teamDetails[0].teamNameShort,
+	"teamfounded": req.body.data.teamDetails[0].teamFounded,
+	"teamHome": req.body.data.teamDetails[0].teamHomeCity,
+	"players": req.body.data.teamDetails[0].players
+	};
+	var teamDetailsArr = [];
+	teamDetailsArr.push(teamDetailsObj);
+	console.log("teamDetailsArr[0]: " + teamDetailsArr[0]);
+	console.log("teamDetailsArr[0].teamName: " + teamDetailsArr[0].teamName);
+	console.log("teamDetailsArr[0].teamNameShort: " + teamDetailsArr[0].teamNameShort);
+	console.log("teamDetailsArr[0].teamFounded: " + teamDetailsArr[0].teamFounded);
+	console.log("teamDetailsArr[0].teamHomeCity: " + teamDetailsArr[0].teamHomeCity);
+	// teamDetails.push(teamDetailsObj);
+	// console.log("After push: " + teamDetails[0].teamName);
+	// var target = data.teamDetails;
+	// console.log(teamDetailsObj);
 	var newTeam = new Team({
+	// 	"data.teamDetails": teamDetails,
 		// POSTMAN SETUP BELOW
 		// "team": req.body.team[0],
-		// "teamName": req.body.team[0].teamName,
-		// "shortTeamName": req.body.team[0].shortTeamName,
+		// "data.teamDetails[0].teamName": teamDetails[0].teamName,
+		// "data.teamDetails[0].teamNameShort": req.body.data.teamDetails[0].teamNameShort,
 		// "teamRoster": req.body.team[0].teamRoster,
-		// "teamCoach": req.body.team[0].teamCoach
-
-		// WEB SETUP BELOW
-		"team.teamRoster.teamCoach": req.body.coachName,
-		"team.shortTeamName": req.body.teamShortName,
-		"team.teamName": req.body.teamName,
-		"team.teamRoster.players": players,
-		"team.added": new Date(),
-		"team.updated": new Date()
+		// "data.teamDetails[0].teamName": teamDetailsArr[0].teamName,
+		"data.updated": new Date(),
+		"data.added": new Date(),
+		"data.entry": req.body.data.entry
+		// "team.teamRoster.teamCoach": req.body.coachName,
+		// "team.shortTeamName": req.body.teamShortName,
+		// "team.teamName": req.body.teamName,
+		// "team.teamRoster.players": players,
+		// "team.added": new Date(),
+		// "team.updated": new Date()
 	});
-
-	// console.log(req.params);
-
+	newTeam.data.teamDetails.push(teamDetailsArr[0]);
+	console.log("This is the [0] of teamDetails: " + newTeam.data.teamDetails[0].teamName);
 	newTeam.save().then((doc) => {
+		console.log("This is newTeam.data: " + newTeam.data);
 		var teamId = doc.id;
 		res.render('success.hbs', {teamId});
 		console.log("Team Added - " + teamId);

@@ -31,12 +31,15 @@ var Team = mongoose.model('Team', {
       type: Date,
       default: Date.Now
     },
+    updated: {
+      type: Date,
+      default: Date.Now
+    },
     teamDetails: [
       {
         teamName: {
           type: String,
           trim: true,
-          required: true,
           default: "First Team"
         },
         teamNameShort: {
@@ -44,16 +47,20 @@ var Team = mongoose.model('Team', {
           trim: true,
           uppercase: true,
           maxlength: 3,
-          required: true
+          default: "XXX"
         },
         teamFounded: {
           type: Number,
-          maxlength: 4
+          maxlength: 4,
+          default: 2000
         },
         teamHomeCity: {
-          type: String
+          type: String,
+          trim: true,
+          default: "City"
         },
         players: [ player ],
+        type: Mixed
       }
     ]
 
