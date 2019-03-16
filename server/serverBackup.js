@@ -102,46 +102,33 @@ app.get('/team/:id', (req, res) => {
     res.status(400).send();
 	});
 });
-
-
 // POST ROUTES
 app.post('/create', (req, res) => {
 	console.log('Post command received');
 	// We need to push the players names and other information into an array
-	var players = [];
-	var playerObj = {};
-	for (let i = 1; i < 21; i++) {
-		var playerObj = { playerName: req.body[`player${i}Name`], playerNumber: req.body[`player${i}Number`], playerPosition: req.body[`player${i}Position`] };
-		if (req.body["player" + i + "Name"] === '') {
-			console.log("Empty player name detected, disregarding");
-		} else {
-			players.push(playerObj);
-		}
-	}
+	// var players = [];
+	// var playerObj = {};
+	// for (let i = 1; i < 21; i++) {
+	// 	var playerObj = { playerName: req.body[`player${i}Name`], playerNumber: req.body[`player${i}Number`], playerPosition: req.body[`player${i}Position`] };
+	// 	if (req.body["player" + i + "Name"] === '') {
+	// 		console.log("Empty player name detected, disregarding");
+	// 	} else {
+	// 		players.push(playerObj);
+	// 	}
+	// }
 	//We need to push the variable below, 'teamDetails', as an object into an array of the same name
-
-	// This takes the player information from Postman and adds it to an array
-	// var playersArr = req.body.data.teamDetails[0].players;
+	var playersArr = req.body.data.teamDetails[0].players;
 
 	var teamDetailsObj = {
 	// Modified for Postman
-	// "teamName": req.body.data.teamDetails[0].teamName,
-	// "teamNameShort": req.body.data.teamDetails[0].teamNameShort,
-	// "teamFounded": req.body.data.teamDetails[0].teamFounded,
-	// "teamHomeCity": req.body.data.teamDetails[0].teamHomeCity,
-	// "coachingStaff.headCoach": req.body.data.teamDetails[0].coachingStaff.headCoach,
-	// "coachingStaff.teamManager": req.body.data.teamDetails[0].coachingStaff.teamManager,
-	// "players": playersArr
+	"teamName": req.body.data.teamDetails[0].teamName,
+	"teamNameShort": req.body.data.teamDetails[0].teamNameShort,
+	"teamFounded": req.body.data.teamDetails[0].teamFounded,
+	"teamHomeCity": req.body.data.teamDetails[0].teamHomeCity,
+	"coachingStaff.headCoach": req.body.data.teamDetails[0].coachingStaff.headCoach,
+	"coachingStaff.teamManager": req.body.data.teamDetails[0].coachingStaff.teamManager,
+	"players": playersArr
 	// Setup for Web Entry
-	"teamName": req.body.teamName,
-	"teamNameShort": req.body.teamNameShort,
-	// "teamFounded": req.body.teamFounded,
-	// "teamHomeCity": req.body.teamHomeCity,
-	"coachingStaff.headCoach": req.body.headCoach,
-	"coachingStaff.teamManager": req.body.teamManager,
-	"players": players
-
-
 	};
 	var teamDetailsArr = [];
 	teamDetailsArr.push(teamDetailsObj);
@@ -149,7 +136,7 @@ app.post('/create', (req, res) => {
 		// POSTMAN SETUP WORKING
 		"data.updated": new Date(),
 		"data.added": new Date(),
-		// "data.entry": req.body.entry,
+		"data.entry": req.body.data.entry,
 		// WEB ENTRY SETUP
 
 	});
