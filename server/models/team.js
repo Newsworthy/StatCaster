@@ -4,20 +4,22 @@ var Mixed = mongoose.Schema.Types.Mixed;
 var Schema = mongoose.Schema;
 
 var player = new Schema({
-      player:  {
-        playerName: {
-          type: String,
-          trim: true,
-          required: true
-        },
-        playerNumber: {
-          type: Number,
-          minlength: 1,
-          maxlength: 2
-          }
-        },
-        playerPosition: {
-          type: String
+      playerName: {
+        type: String,
+        trim: true,
+        required: true
+      },
+      playerNumber: {
+        type: Number,
+        minlength: 1,
+        maxlength: 2
+      },
+      playerPosition: {
+        type: String
+      },
+      playerNationality: {
+        type: String,
+        maxlength: 3
       }
 });
 
@@ -60,8 +62,20 @@ var Team = mongoose.model('Team', {
           default: "City"
         },
         players: [ player ],
-        type: Mixed
-      }
+
+        coachingStaff: {
+          headCoach: {
+            type: String,
+            trim: true
+          },
+          teamManager: {
+            type: String,
+            trim: true
+          },
+          type: Mixed,
+        }
+        },
+
     ]
 
       // teamName: {
