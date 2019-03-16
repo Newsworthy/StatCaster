@@ -172,11 +172,11 @@ app.post('/remove/team/:id', (req, res) => {
   if(!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
-  Team.findOneAndDelete(id).then((team) => {
+  Team.findOneAndRemove({ _id: id }).then((team) => {
     if(!team) {
       return res.status(404).send();
     }
-    res.render("deleteSuccess.hbs");
+    res.render("deleteSuccess.hbs", {id});
   }).catch((e) => {
     res.status(400).send();
   });

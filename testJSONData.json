@@ -1,33 +1,169 @@
+// 20190316125713
+// http://localhost:3000/team/5c8cee13779e2500178986be
 
-[
-  {
-    "teamName": "Test Teamname",
-    "teamNameShort": "TTN",
-    "teamFounded": "1986",
-    "teamHome": "London",
-    "players": [
-      {
-        "player1Name": "Test Player 1",
-        "player1Position": "Forward",
-        "player1Nationality": "GBR"
-      },
-      {
-        "player2Name": "Test Player 2",
-        "player2Position": "Defender",
-        "player2Nationality": "UKR"
-      },
-      {
-        "player3Name": "Test Player 3",
-        "player3Position": "Goaltender",
-        "player3Nationality": "IRL",
-        "captain": true
-      }
-    ],
-    "coachingStaff": [
-      {
-      "headCoach": "Derp McHerpson",
-      "teamManager": "Plarp McFlarplarp"
-      }
-    ]
+{
+  "team": {
+    "data": {
+      "entry": "StatCaster.DEMO.TEMPLATE",
+      "updated": "2019-03-16T12:37:39.877Z",
+      "added": "2019-03-16T12:37:39.877Z",
+      "teamDetails": [
+        {
+          "teamName": "Template Team",
+          "teamNameShort": "TMT",
+          "teamFounded": 1928,
+          "teamHomeCity": "Templatesville",
+          "players": [
+            {
+              "_id": "5c8cee13779e2500178986d3",
+              "playerName": "First Player",
+              "playerNumber": 1,
+              "playerPosition": "Forward",
+              "playerNationality": "Australia"
+            },
+            {
+              "_id": "5c8cee13779e2500178986d2",
+              "playerName": "Second Player",
+              "playerNumber": 2,
+              "playerPosition": "Goaltender",
+              "playerNationality": "Denmark"
+            },
+            {
+              "_id": "5c8cee13779e2500178986d1",
+              "playerName": "Third Player",
+              "playerNumber": 3,
+              "playerPosition": "Defense",
+              "playerNationality": "Sweden"
+            },
+            {
+              "_id": "5c8cee13779e2500178986d0",
+              "playerName": "Fourth Player",
+              "playerNumber": 4,
+              "playerPosition": "Forward",
+              "playerNationality": "Germany"
+            },
+            {
+              "_id": "5c8cee13779e2500178986cf",
+              "playerName": "Fifth Player",
+              "playerNumber": 5,
+              "playerPosition": "Defense",
+              "playerNationality": "Finland"
+            },
+            {
+              "_id": "5c8cee13779e2500178986ce",
+              "playerName": "Sixth Player",
+              "playerNumber": 6,
+              "playerPosition": "Goaltender",
+              "playerNationality": "Latvia"
+            },
+            {
+              "_id": "5c8cee13779e2500178986cd",
+              "playerName": "Seventh Player",
+              "playerNumber": 7,
+              "playerPosition": "Defense",
+              "playerNationality": "Canada"
+            },
+            {
+              "_id": "5c8cee13779e2500178986cc",
+              "playerName": "Eighth Player",
+              "playerNumber": 8,
+              "playerPosition": "Forward",
+              "playerNationality": "Jamaica"
+            },
+            {
+              "_id": "5c8cee13779e2500178986cb",
+              "playerName": "Ninth Player",
+              "playerNumber": 9,
+              "playerPosition": "Defense",
+              "playerNationality": "Sierra Leone"
+            },
+            {
+              "_id": "5c8cee13779e2500178986ca",
+              "playerName": "Tenth Player",
+              "playerNumber": 10,
+              "playerPosition": "Defense",
+              "playerNationality": "Lithuania"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c9",
+              "playerName": "Eleventh Player",
+              "playerNumber": 11,
+              "playerPosition": "Forward",
+              "playerNationality": "Poland"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c8",
+              "playerName": "Twelfth Player",
+              "playerNumber": 12,
+              "playerPosition": "Defense",
+              "playerNationality": "Romania"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c7",
+              "playerName": "Thirteenth Player",
+              "playerNumber": 13,
+              "playerPosition": "Forward",
+              "playerNationality": "Spain"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c6",
+              "playerName": "Fourteenth Player",
+              "playerNumber": 14,
+              "playerPosition": "Defense",
+              "playerNationality": "Georgia"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c5",
+              "playerName": "Fifteenth Player",
+              "playerNumber": 15,
+              "playerPosition": "Defense",
+              "playerNationality": "Ukraine"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c4",
+              "playerName": "Sixteenth Player",
+              "playerNumber": 16,
+              "playerPosition": "Forward",
+              "playerNationality": "Austria"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c3",
+              "playerName": "Seventeenth Player",
+              "playerNumber": 17,
+              "playerPosition": "Defense",
+              "playerNationality": "Estonia"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c2",
+              "playerName": "Eighteenth Player",
+              "playerNumber": 18,
+              "playerPosition": "Forward",
+              "playerNationality": "United States"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c1",
+              "playerName": "Nineteenth Player",
+              "playerNumber": 19,
+              "playerPosition": "Defense",
+              "playerNationality": "United Kingdom"
+            },
+            {
+              "_id": "5c8cee13779e2500178986c0",
+              "playerName": "Twentieth Player",
+              "playerNumber": 20,
+              "playerPosition": "Forward",
+              "playerNationality": "Iceland"
+            }
+          ],
+          "_id": "5c8cee13779e2500178986bf",
+          "coachingStaff": {
+            "headCoach": "Template Coach",
+            "teamManager": "Template Manager"
+          }
+        }
+      ]
+    },
+    "_id": "5c8cee13779e2500178986be",
+    "__v": 0
   }
-]
+}
