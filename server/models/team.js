@@ -18,8 +18,7 @@ var player = new Schema({
         type: String
       },
       playerNationality: {
-        type: String,
-        maxlength: 3
+        type: String
       }
 });
 
@@ -27,7 +26,7 @@ var Team = mongoose.model('Team', {
   data: {
     entry: {
       type: String,
-      default: "StatCaster2019.USER.INPUT"
+      default: "StatCaster.USER.INPUT"
     },
     added: {
       type: Date,
@@ -76,39 +75,9 @@ var Team = mongoose.model('Team', {
         }
         },
 
-    ]
-
-      // teamName: {
-      // 	type: String,
-      // 	trim: true,
-      // 	required: true
-    	// },
-    	// shortTeamName: {
-      // 	type: String,
-   	  //  	trim: true,
- 	    //  	uppercase: true,
-	    //   maxlength: 3,
-	    //   required: true
-	    // },
-	    // teamRoster: {
-	    //   players: [ player ],
-	    //   teamCoach: {
-	    //     type: String,
-	    //     trim: true,
-	    //     required: true
-	    // 	},
-	 	 	// },
-   	  // added: {
-      // 	type: Date,
-      // 	default: Date.now
-    	// },
-    	// updated: {
-      // 	type: Date,
-      // 	default: Date.now
-    	// },
+      ]
       // teamLogo: result.url,
-      // // teamLogo_id: result.public_id,
-      // type: Mixed
+      // // teamLogo_id: result.public_id
   	}
 });
 

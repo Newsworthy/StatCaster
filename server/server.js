@@ -111,7 +111,7 @@ app.post('/create', (req, res) => {
 	var players = [];
 	var playerObj = {};
 	for (let i = 1; i < 21; i++) {
-		var playerObj = { playerName: req.body[`player${i}Name`], playerNumber: req.body[`player${i}Number`], playerPosition: req.body[`player${i}Position`] };
+		var playerObj = { playerName: req.body[`player${i}Name`], playerNumber: req.body[`player${i}Number`], playerPosition: req.body[`player${i}Position`], playerNationality: req.body[`player${i}Nationality`] };
 		if (req.body["player" + i + "Name"] === '') {
 			console.log("Empty player name detected, disregarding");
 		} else {
@@ -135,14 +135,15 @@ app.post('/create', (req, res) => {
 	// Setup for Web Entry
 	"teamName": req.body.teamName,
 	"teamNameShort": req.body.teamNameShort,
-	// "teamFounded": req.body.teamFounded,
-	// "teamHomeCity": req.body.teamHomeCity,
+	"teamFounded": req.body.teamFounded,
+	"teamHomeCity": req.body.teamHomeCity,
+	"homeColor": req.body.homeColor,
+	"awayColor": req.body.awayColor,
 	"coachingStaff.headCoach": req.body.headCoach,
 	"coachingStaff.teamManager": req.body.teamManager,
 	"players": players
-
-
 	};
+	console.log(req.body);
 	var teamDetailsArr = [];
 	teamDetailsArr.push(teamDetailsObj);
 	var newTeam = new Team({
@@ -156,7 +157,6 @@ app.post('/create', (req, res) => {
 
 	newTeam.data.teamDetails.push(teamDetailsArr[0]);
 	newTeam.save().then((doc) => {
-		console.log("This is newTeam.data: " + newTeam.data);
 		var teamId = doc.id;
 		res.render('success.hbs', {teamId});
 		console.log("Team Added - " + teamId);

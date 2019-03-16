@@ -65,21 +65,26 @@
     						</div>
 							</div>
 							<div class="form-group row">
-								<div class="col-md-3">
+								<div class="col-md-2">
+    						<label for="teamHomeCity" class="col-form-label">Team Home City</label>
+      						<input id="teamHomeCity" name="teamHomeCity" placeholder="City" type="text" aria-describedby="teamHomeCityHelpBlock" class="form-control here">
+
+    						</div>
+								<div class="col-md-2">
     						<label for="teamFounded" class="col-form-label">Team Founding Year</label>
-      						<input id="teamFounded" name="teamFounded" placeholder="2000" type="text" aria-describedby="teamFoundedHelpBlock" required="required" maxlength="4" class="form-control here">
+      						<input id="teamFounded" name="teamFounded" placeholder="2000" type="text" aria-describedby="teamFoundedHelpBlock" required="required" class="form-control here">
       						<span id="teamFoundedHelpBlock" class="form-text text-muted">Year in YYYY format</span>
     						</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<label for="imageFile" class="col-form-label">Team Logo</label>
 									<input type="file" class="btn btn-default btn-block" name="teamLogo" accept="image/png">
 									<span id="teamLogoHelpBlock" class="form-text text-muted">Currently PNG files only</span>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<label for="homeColor" class="col-form-label">Home Jersey Colour</label>
 									<input id="homeColor" type="color" name="homeColor" value="#000000" class="form-control here btn">
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<label for="awayColor" class="col-form-label">Away Jersey Colour</label>
 									<input id="awayColor" type="color" name="awayColor" value="#FFFFFF" class="form-control here btn">
 								</div>
